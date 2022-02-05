@@ -1,0 +1,168 @@
+/*
+COMMON
+*/
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans',sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+}
+
+.btn{
+    font-size: 13px;
+    border: 0;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-remove{
+    display: inline-block;
+    margin-top: 5px;
+    background-color: #f71616;
+    color: #ffffff;
+}
+
+.btn-add, .btn-check, .btn-save, .btn-search{
+    display: inline-block;
+    background-color: #13a8d5;
+    color: #ffffff;
+}
+
+.header-container{
+    background-color: #f2f2f2;
+    padding: 20px;
+    position: fixed;
+    width: calc(100% - 40px);
+    top: 0;
+    z-index: 999;
+}
+
+.header-container > .header-left{
+    width: 150px;
+    height: 100%;
+    float: left;
+}
+
+.header-container > .header-left > .header-title{
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+.header-container > .header-left > .header-title > a{
+    color: #4d4d4d;
+}
+
+.header-container > .header-map{
+    float: left;
+    height: 25px;
+    margin-top: 10px;
+}
+
+.header-container > .header-map > form {
+    float: left;
+}
+
+.header-container > .header-right{
+    width: 370px;
+    float: right;
+    text-align: right;
+}
+
+.uri-stats{
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.uri-stats > div{
+    font-weight: bold;
+    float: left;
+    margin-right: 20px;
+    margin-left: 25px;
+    color: #4d4d4d;
+}
+
+.uri-stats > div > span{
+    font-weight: normal;
+    color: #a2a2a2;
+}
+
+.uri-stats > div > input{
+    width: 200px;
+    border: 0;
+    color: #a2a2a2;
+    padding: 0;
+}
+
+.uri-container{
+    width: 100%;
+    margin: 20px auto;
+}
+
+.uri{
+    width: 600px;
+    margin: 5px 10px;display: inline-block;
+}
+
+.uri > input{
+    padding-left: 50px;
+}
+
+.uri > .uri-error{
+    border-color: #f71616;
+    color: #f71616;
+}
+
+.uri-status{
+    width: 25px;
+    height: 17px;
+    background-color: #c4c4c4;
+    color: #ffffff;
+    position: absolute;
+    padding: 9px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 14px;
+    margin-top: -37px;
+    text-align: center;
+}
+
+.uri-status > a{
+    color: #ffffff;
+}
+
+.uri-status-404{
+    background-color: #f71616;
+}
+
+.uri-status-200{
+    background-color: #13a8d5;
+}
+
+.search-container{
+    width: 100%;
+    text-align: center;
+}
+
+.search-field{
+    width: 500px;
+    margin: 100px auto 20px auto;
+    color: #464646;
+}
