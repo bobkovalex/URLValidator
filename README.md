@@ -1,6 +1,6 @@
 # URLValidator
 
-## Check links response status via free link validator online
+### Check links response status via free link validator online
 
 #### How-to run
 
