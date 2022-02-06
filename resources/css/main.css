@@ -4,7 +4,11 @@ COMMON
 
 body{
     margin: 0;
-    padding: 0;
+    padding: 0 0 40px 0;
     font-family: 'Open Sans',sans-serif;
-    background-color: #131314;
+}
+
+#url-list{
+    width: 600px;
+    height: 300px;
 }

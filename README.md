@@ -1,10 +1,9 @@
-# Redirect Maps
+# URLValidator
 
-Redirection maps auto checker and management
+## Check links response status via free link validator online
 
-## How-to run
+#### How-to run
 
-1. Run folowing commands from project's root directory:
-`npm install`
-`node redirects.app`
-2. Go to http://localhost:3000
+1. Open `index.html`
+2. Past ULRs list into textarea
+3. Click on `Check` button
