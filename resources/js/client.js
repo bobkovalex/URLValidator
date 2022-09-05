@@ -11,18 +11,21 @@ $( document ).ready(function() {
         var countTotal = data.length;
         $('#uri-stats-total > span').text(countTotal);
         data.forEach((url, i) => {
-            $.ajax({
-                url  : url,
-                type : 'POST',
-                dataType: 'jsonp'
-            }).done(function(xhr){
-                // Set status if no error occurred
-                setStatus(url, countTotal, xhr);
-            }).fail(function(xhr){
-                // Set status if error occurred
-                setStatus(url, countTotal, xhr);
-            });
+            makeRequest(url);
         });
+        // data.forEach((url, i) => {
+        //     $.ajax({
+        //         url  : url,
+        //         type : 'POST',
+        //         dataType: 'jsonp'
+        //     }).done(function(xhr){
+        //         // Set status if no error occurred
+        //         setStatus(url, countTotal, xhr);
+        //     }).fail(function(xhr){
+        //         // Set status if error occurred
+        //         setStatus(url, countTotal, xhr);
+        //     });
+        // });
     });
 
     // Clear
@@ -32,11 +35,23 @@ $( document ).ready(function() {
     
 });
 
+function makeRequest(url) {
+    fetch(url)
+      .then(response => {
+        console.log('response.status: ', response.status); // 👉️ 200
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+}
+
 /*
 Set URI's status 200/404
 */
 function setStatus(url, countTotal, xhr){    
     var inputStatus;
+    // console.log(xhr.status);
     if(xhr.status == '200'){
         count200++;
         $('#uri-stats-200 > span').text(count200);
