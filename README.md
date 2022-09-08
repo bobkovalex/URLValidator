@@ -2,7 +2,7 @@
 ## Links (url) validator and crawler
 Forget about broken links forever
 
-#### How-to run
+#### How-to Run
 
 1. Install NodeJS
 2. Navigate to project root directory
@@ -14,3 +14,6 @@ Forget about broken links forever
 Check your links from sitemap, etc to make sure that all links are responding with 200.  
 Links validator will also crawl your page and search for links, to make sure that they are woking too.  
 Filter checked links by response code, just by clicking on proper response code cunter. 
+
+#### Live Demo
+https://seo-little-helper.herokuapp.com
