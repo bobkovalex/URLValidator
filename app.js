@@ -1,4 +1,5 @@
 const express = require('express');
+const port = process.env.PORT || 8000;
 var bodyParser = require('body-parser');
 var tools = require('./tools');
 
@@ -27,8 +28,6 @@ app.post('/url_checker', urlencodedParser, function (req, res) {
 });
 
 // Init server
-var server = app.listen(8080, function () {
-    var host = server.address().address
-    var port = server.address().port;
-    console.log("Server started at http://%s:%s", (host === '::')?'localhost':host, port);
+app.listen(port, () => {
+    console.log('Server is running on port %s', port);
 });
