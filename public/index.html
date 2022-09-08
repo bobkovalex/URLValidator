@@ -34,18 +34,30 @@
             </div>
             <div class="row mt-5 bg-white p-3 rounded">
                 <div class="col-sm text-info" id="uri-stats-total">Total URLs: <span>0</span></div>
-                <div class="col-sm text-success" id="uri-stats-200">200: <span>0</span></div>
-                <div class="col-sm text-danger" id="uri-stats-404">404: <span>0</span></div>
-                <div class="col-sm text-warning" id="uri-stats-500">5xx: <span>0</span></div>
+                <div class="col-sm text-success" id="uri-stats-2xx">2xx: <span>0</span></div>
+                <div class="col-sm text-info" id="uri-stats-3xx">3xx: <span>0</span></div>
+                <div class="col-sm text-warning" id="uri-stats-4xx">4xx: <span>0</span></div>
+                <div class="col-sm text-danger" id="uri-stats-5xx">5xx: <span>0</span></div>
                 <div class="col-sm text-secondary" id="uri-status">Status: <span>Not Running</span></div>
             </div>
             <div class="row mt-4">
                 <div class="col">
-                    <textarea class="form-control mb-3" id="url-list" placeholder="Enter ULRs list separated by ENTER"></textarea>
-                    <button type="button" class="btn btn-primary" id="url-check">Check</button>
+                    <textarea class="form-control mb-3" name="urls" id="url-list" placeholder="Enter ULRs list separated by ENTER">https://products.conholdate.app</textarea>
+                    <button type="button" class="btn btn-primary" id="url-check">Validate</button>
                     <button type="button" class="btn btn-danger" id="url-clear">Clear</button>
                 </div>
                 <div class="col" id="url-container">
+                    <div class="loading">
+                        <h3>Crawling URLs</h3>
+                        <h5>This can take a while, please be patient</h5>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
                     <!-- checked urls will be appended here -->
                 </div>
             </div>
