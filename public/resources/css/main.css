@@ -13,6 +13,10 @@ body{
     height: 300px;
 }
 
+.uri-stats{
+  cursor: pointer;
+}
+
 /*
  * Loading Dots
  * Can we use pseudo elements here instead :after?

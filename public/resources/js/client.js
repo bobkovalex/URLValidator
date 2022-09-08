@@ -36,6 +36,32 @@ $( document ).ready(function() {
     $('#url-clear').on('click', function(){
         clear();
     });
+
+    // Filter
+    $('.uri-stats').on('click', function(){
+        var clickedButton = $(this).text().charAt(0);
+        switch(clickedButton){
+            case 'T':
+                $('.status').show();
+                break;
+            case '2':
+                $('.status').hide();
+                $('.status-2xx').show();
+                break;
+            case '3':
+                $('.status').hide();
+                $('.status-3xx').show();
+                break;
+            case '4':
+                $('.status').hide();
+                $('.status-4xx').show();
+                break;
+            case '5':
+                $('.status').hide();
+                $('.status-5xx').show();
+                break;
+        }
+    });
     
 });
 
@@ -49,26 +75,30 @@ function printResult(url, codeStatus){
             count2xx++;
             $('#uri-stats-2xx > span').text(count2xx);
             inputStatus = '<span class="input-group-text text-white border-light bg-success" id="inputGroup-sizing-sm">'+codeStatus+'</span>';
+            codeStatus = '2xx';
             break;
         case (codeStatus >= '300' && codeStatus < '400'):
             count3xx++;
             $('#uri-stats-3xx > span').text(count3xx);
             inputStatus = '<span class="input-group-text text-white border-light bg-warning" id="inputGroup-sizing-sm">'+codeStatus+'</span>';
+            codeStatus = '3xx';
             break;
         case (codeStatus >= '400' && codeStatus < '500'):
             count4xx++;
             $('#uri-stats-4xx > span').text(count4xx);
             inputStatus = '<span class="input-group-text text-white border-light bg-warning" id="inputGroup-sizing-sm">'+codeStatus+'</span>';
+            codeStatus = '4xx';
             break;
         case (codeStatus >= '500'):
             count5xx++;
             $('#uri-stats-5xx > span').text(count5xx);
             inputStatus = '<span class="input-group-text text-white border-light bg-danger" id="inputGroup-sizing-sm">'+codeStatus+'</span>';
+            codeStatus = '5xx';
             break;
     }
     
     // append input-url
-    var html =  '<div class="input-group input-group-sm mb-3">'+
+    var html =  '<div class="input-group input-group-sm mb-3 status status-'+codeStatus+'">'+
                     '<div class="input-group-prepend">'+
                         inputStatus+
                     '</div>'+
