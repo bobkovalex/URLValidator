@@ -1,4 +1,4 @@
-# Little SEO Helper
+# SEO Little Helper
 
 ### Check links response status via free link validator online
 
