@@ -2,19 +2,23 @@
 COMMON
 */
 
-body{
+body {
     margin: 0;
     padding: 0 0 40px 0;
     font-family: 'Open Sans',sans-serif;
 }
 
-#url-list{
+#url-list {
     width: 600px;
     height: 300px;
 }
 
-.uri-stats{
+.uri-stats {
   cursor: pointer;
+}
+
+.checkbox-container {
+  color: #424242;
 }
 
 /*

@@ -14,6 +14,7 @@ $( document ).ready(function() {
     // Check urls
     $('#url-check').on('click', function(){
         setStatus(workerStatus.InProgress);
+        var checkbox = $('#innerHTMLCheckbox').is(":checked");
         // get urls array
         var data = $('#url-list').val().split('\n');
         // send post request to endpoint
@@ -21,7 +22,8 @@ $( document ).ready(function() {
             url  : '/url_checker',
             type : 'POST',
             data: {
-                urls: JSON.stringify(data)
+                urls: JSON.stringify(data),
+                innerHTML: checkbox
             },
             success: function(data){
                 data.forEach((elem) => {

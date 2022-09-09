@@ -43,8 +43,16 @@
             <div class="row mt-4">
                 <div class="col">
                     <textarea class="form-control mb-3" name="urls" id="url-list" placeholder="Enter ULRs list separated by ENTER"></textarea>
-                    <button type="button" class="btn btn-primary" id="url-check">Validate</button>
-                    <button type="button" class="btn btn-danger" id="url-clear">Clear</button>
+                    <div class="row">
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-primary" id="url-check">Validate</button>
+                            <button type="button" class="btn btn-danger" id="url-clear">Clear</button>
+                        </div>
+                        <div class="col-sm text-right checkbox-container">
+                            <input type="checkbox" class="form-check-input" id="innerHTMLCheckbox" name="innerHTML"/>
+                            <label for="innerHTML" class="form-check-label">crawl for inner links</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="col" id="url-container">
                     <div class="loading">

@@ -21,8 +21,8 @@ app.post('/url_checker', urlencodedParser, function (req, res) {
     (async () => {
         let data = [];
         var urls = JSON.parse(req.body.urls);
-        await tools.getResponse(urls, data);
-        console.log(data);
+        var innerHTML = JSON.parse(req.body.innerHTML);
+        await tools.getResponse(urls, data, innerHTML);
         res.status(200).send(data);
     })();
 });
