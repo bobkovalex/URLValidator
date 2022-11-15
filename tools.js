@@ -1,4 +1,5 @@
 const axios = require('axios');
+const https = require('https');
 const { response } = require('express');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
@@ -18,8 +19,12 @@ async function getResponse(urls, responseArray, recursiveCrawl){
 
 async function httpResponse(url, rootUrl, responseArray, recursiveCrawl) {
     try {
+        const agent = new https.Agent({  
+            rejectUnauthorized: false
+          });
+
         // Get response from URL
-        const response = await axios.get(url);
+        const response = await axios.get(url, { httpsAgent: agent });
         // Set response code status
         let codeStatus = response.status
         // Create pair url/response code

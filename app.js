@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var tools = require('./tools');
 
 // Create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: false, limit: '50mb' }) 
 var app = express();
 app.use(express.static('public'));
 
