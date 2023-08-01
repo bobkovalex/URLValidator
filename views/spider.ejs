@@ -1,0 +1,43 @@
+<html prefix="og: http://ogp.me/ns#" lang="en">
+    <head>
+        <%- include('partials/head') %>
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <div class="row text-center mt-5">
+                <h1 class="text-dark">URLValidator</h1>
+                <h2 class="text-secondary lead">Check links response status via free link validator online</h2>
+            </div>
+            <div class="row pt-4 pb-4 w-100 mx-auto">
+                <div class="col-10 col-md-12 bg-white pt-2 pb-2 rounded-3 d-flex align-items-center m-auto">
+                    <div class="input-group">
+                        <input type="text" class="form-control shadow-none w-50 border-0" placeholder="Enter URL" aria-label="url" aria-describedby="url" id="url">
+                        <span class="input-group-text border-0 bg-white d-flex" id="url-clear" role="button">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                        <button class="btn btn-primary opacity-75 rounded-2 ps-3 pe-3 ms-2 me-2" type="button" id="url-validate">Validate</button>
+                        <div class="ps-3 pe-3 pt-2 border-start">
+                            <input type="checkbox" class="form-check-input" id="innerHTMLCheckbox" name="innerHTML"/>
+                            <label for="innerHTML" class="form-check-label">spider mode</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9" id="crawl-result-container">
+                    <%- include('partials/loading') %>
+                    <div id="crawl-results"><!-- checked urls will be appended here --></div>
+                </div>
+                <div class="col-3 d-flex flex-column bg-white p-4 rounded">
+                    <div role="button" class="uri-stats p-2 text-dark" id="uri-stats-total">Total URLs: <span>0</span></div>
+                    <div role="button" class="uri-stats p-2 text-success" id="uri-stats-2xx">2xx: <span>0</span></div>
+                    <div role="button" class="uri-stats p-2 text-info" id="uri-stats-3xx">3xx: <span>0</span></div>
+                    <div role="button" class="uri-stats p-2 text-warning" id="uri-stats-4xx">4xx: <span>0</span></div>
+                    <div role="button" class="uri-stats p-2 text-danger" id="uri-stats-5xx">5xx: <span>0</span></div>
+                    <div class="text-secondary p-2" id="uri-status">Status: <span>Not Running</span></div>
+                </div>
+            </div>
+            <%- include('partials/footer') %>
+        </div>
+    </body>
+</html>

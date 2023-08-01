@@ -1,20 +1,7 @@
-/*
-COMMON
-*/
-
 body {
     margin: 0;
     padding: 0 0 40px 0;
     font-family: 'Open Sans',sans-serif;
-}
-
-#url-list {
-    width: 600px;
-    height: 300px;
-}
-
-.uri-stats {
-  cursor: pointer;
 }
 
 .checkbox-container {
@@ -25,25 +12,25 @@ body {
  * Loading Dots
  * Can we use pseudo elements here instead :after?
  */
-.loading {
+#loading {
     text-align: center;
     margin-top: 80px;
     display: none;
 }
 
-.loading > h3 {
+#loading > h3 {
     text-transform: uppercase;
     font-size: 21px;
 }
 
-.loading > h5 {
+#loading > h5 {
     text-transform: lowercase;
     font-size: 15px;
     color: #8a8a8a;
     margin-bottom: 30px;
 }
 
- .loading span {
+ #loading span {
     display: inline-block;
     vertical-align: middle;
     width: .9em;
@@ -58,27 +45,27 @@ body {
    * Dots Colors
    * Smarter targeting vs nth-of-type?
    */
-  .loading span:nth-of-type(2) {
+  #loading span:nth-of-type(2) {
     background: #008FB2;
     animation-delay: 0.2s;
   }
-  .loading span:nth-of-type(3) {
+  #loading span:nth-of-type(3) {
     background: #009B9E;
     animation-delay: 0.4s;
   }
-  .loading span:nth-of-type(4) {
+  #loading span:nth-of-type(4) {
     background: #00A77D;
     animation-delay: 0.6s;
   }
-  .loading span:nth-of-type(5) {
+  #loading span:nth-of-type(5) {
     background: #00B247;
     animation-delay: 0.8s;
   }
-  .loading span:nth-of-type(6) {
+  #loading span:nth-of-type(6) {
     background: #5AB027;
     animation-delay: 1.0s;
   }
-  .loading span:nth-of-type(7) {
+  #loading span:nth-of-type(7) {
     background: #A0B61E;
     animation-delay: 1.2s;
   }

@@ -7,17 +7,11 @@ const { JSDOM } = jsdom;
 /*
 * Get HTTPS response from passed urls array 
 */
-module.exports.getResponse = async function(urls, responseArray, recursiveCrawl){
-    await getResponse(urls, responseArray, recursiveCrawl);
+module.exports.getResponse = async function(url, responseArray, spiderMode){
+    await httpResponse(url, true, responseArray, spiderMode);
 }
 
-async function getResponse(urls, responseArray, recursiveCrawl){
-    for(url of urls){
-        await httpResponse(url, true, responseArray, recursiveCrawl);
-    }
-}
-
-async function httpResponse(url, isRootUrl, responseArray, isRecursiveCrawl) {
+async function httpResponse(url, isRootUrl, responseArray, spiderMode) {
     try {
         const agent = new https.Agent({  
             rejectUnauthorized: false
@@ -31,8 +25,8 @@ async function httpResponse(url, isRootUrl, responseArray, isRecursiveCrawl) {
         let pair = {url: url, codeStatus: codeStatus};
         responseArray.push(pair);
         // console.log(codeStatus, ' - ', url);
-        // get child urls if url is root & isRecursiveCrawl == isRecursiveCrawl
-        if(isRecursiveCrawl && isRootUrl && codeStatus === 200){
+        // get child urls if url is root & spiderMode == true
+        if(spiderMode && isRootUrl && codeStatus === 200){
             let childUrls = await extractUrls(url, response.data);
             for(childUrl of childUrls){
                 await httpResponse(childUrl, false, responseArray);
@@ -69,8 +63,6 @@ async function extractUrls(originUrl, html) {
                 const baseUrl = `${url.protocol}//${url.hostname}`;
                 urls.push(baseUrl + link);
             }
-        }else{
-            console.log(link);
         }
     }
     return urls;
