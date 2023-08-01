@@ -17,7 +17,7 @@ async function getResponse(urls, responseArray, recursiveCrawl){
     }
 }
 
-async function httpResponse(url, rootUrl, responseArray, recursiveCrawl) {
+async function httpResponse(url, isRootUrl, responseArray, isRecursiveCrawl) {
     try {
         const agent = new https.Agent({  
             rejectUnauthorized: false
@@ -30,10 +30,10 @@ async function httpResponse(url, rootUrl, responseArray, recursiveCrawl) {
         // Create pair url/response code
         let pair = {url: url, codeStatus: codeStatus};
         responseArray.push(pair);
-        console.log(codeStatus, ' - ', url);
-        // get child urls if url is root & recursiveCrawl == recursiveCrawl
-        if(recursiveCrawl && rootUrl && codeStatus === 200){
-            let childUrls = await getInnerUrls(response.data);
+        // console.log(codeStatus, ' - ', url);
+        // get child urls if url is root & isRecursiveCrawl == isRecursiveCrawl
+        if(isRecursiveCrawl && isRootUrl && codeStatus === 200){
+            let childUrls = await extractUrls(url, response.data);
             for(childUrl of childUrls){
                 await httpResponse(childUrl, false, responseArray);
             }
@@ -56,13 +56,21 @@ async function httpResponse(url, rootUrl, responseArray, recursiveCrawl) {
 /*
 * Parse HTML and return array of all urls found in HTML body container
 */
-async function getInnerUrls(html) {
+async function extractUrls(originUrl, html) {
     let urls = [];
     const dom = new JSDOM(html);
     for(selector of dom.window.document.querySelectorAll('a')){
-        let url = selector.getAttribute('href');
-        if(url != null && url.includes('http')){
-            urls.push(url);
+        let link = selector.getAttribute('href');
+        if(link != null){
+            if(link.includes('http')){
+                urls.push(link);
+            }else if(link.startsWith('/')){
+                const url = new URL(originUrl);
+                const baseUrl = `${url.protocol}//${url.hostname}`;
+                urls.push(baseUrl + link);
+            }
+        }else{
+            console.log(link);
         }
     }
     return urls;
