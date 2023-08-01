@@ -24,7 +24,7 @@ $( document ).ready(function() {
             },
             success: function(data){
                 data.forEach((elem) => {
-                    printResult2(elem.url, elem.codeStatus);
+                    printResult(elem.url, elem.codeStatus);
                 });
                 setCounters();
                 setStatus(workerStatus.Finished);
@@ -70,7 +70,7 @@ $( document ).ready(function() {
  * @param {*} url 
  * @param {*} codeStatus 
  */
-function printResult2(url, codeStatus){    
+function printResult(url, codeStatus){    
     var inputStatus = `<span class="input-group-text text-white border-light bg-success" id="inputGroup-sizing-sm">${codeStatus}</span>`;
     switch(true){
         case (codeStatus >= '200' && codeStatus < '300'):
@@ -102,52 +102,6 @@ function printResult2(url, codeStatus){
     '</div>';
     $('#crawl-results').append(html);
 }
-
-// function printResult(url, codeStatus){    
-//     var inputStatus;
-//     switch(true){
-//         case (codeStatus >= '200' && codeStatus < '300'):
-//             count2xx++;
-//             $('#uri-stats-2xx > span').text(count2xx);
-//             inputStatus = '<span class="input-group-text text-white border-light bg-success" id="inputGroup-sizing-sm">'+codeStatus+'</span>';
-//             codeStatus = '2xx';
-//             break;
-//         case (codeStatus >= '300' && codeStatus < '400'):
-//             count3xx++;
-//             $('#uri-stats-3xx > span').text(count3xx);
-//             inputStatus = '<span class="input-group-text text-white border-light bg-warning" id="inputGroup-sizing-sm">'+codeStatus+'</span>';
-//             codeStatus = '3xx';
-//             break;
-//         case (codeStatus >= '400' && codeStatus < '500'):
-//             count4xx++;
-//             $('#uri-stats-4xx > span').text(count4xx);
-//             inputStatus = '<span class="input-group-text text-white border-light bg-warning" id="inputGroup-sizing-sm">'+codeStatus+'</span>';
-//             codeStatus = '4xx';
-//             break;
-//         case (codeStatus >= '500'):
-//             count5xx++;
-//             $('#uri-stats-5xx > span').text(count5xx);
-//             inputStatus = '<span class="input-group-text text-white border-light bg-danger" id="inputGroup-sizing-sm">'+codeStatus+'</span>';
-//             codeStatus = '5xx';
-//             break;
-//     }
-    
-//     // append input-url
-//     var html =  '<div class="input-group input-group-sm mb-3 status status-'+codeStatus+'">'+
-//                     '<div class="input-group-prepend">'+
-//                         inputStatus+
-//                     '</div>'+
-//                     '<input type="text" class="form-control shadow-none border-light" aria-label="200" aria-describedby="inputGroup-sizing-sm" value="' + url + '">'+
-//                     '<div class="input-group-append">'+
-//                         '<span class="input-group-text border-light"><a href="' + url + '" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></span>'+
-//                     '</div>'
-//                 '</div>';
-//     $('#crawl-results').append(html);
-
-//     // Set total count
-//     countTotal++;
-//     $('#uri-stats-total > span').text(countTotal);
-// }
 
 /**
  * Set current work status
