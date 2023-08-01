@@ -2,6 +2,8 @@
 ## Links (url) validator and crawler
 Forget about broken links forever
 
+nodeJS + expressJS + EJS
+
 #### How-to Run
 
 1. Install NodeJS
@@ -12,8 +14,8 @@ Forget about broken links forever
 
 #### Features
 Check your links from sitemap, etc to make sure that all links are responding with 200.  
-Links validator will also crawl your page and search for links, to make sure that they are woking too.  
-Filter checked links by response code, just by clicking on proper response code cunter. 
+Links validator will also crawl your page and search for links, to make sure that they are working too.  
+Filter checked links by response code, just by clicking on proper response code counter. 
 
 #### Live Demo
 https://seo-little-helper.herokuapp.com

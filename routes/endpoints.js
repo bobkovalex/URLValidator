@@ -7,10 +7,14 @@ router.get('/', async function(req, res){
     await handlers.spider(req, res);
 });
 
-// Create application/x-www-form-urlencoded parser
+// API
 const urlEncodedParser = bodyParser.urlencoded({ extended: false, limit: '50mb' });
-router.post('/spider/crawl', urlEncodedParser, async function (req, res) {
-    await handlers.spiderCrawl(req, res);
+router.post('/spider/extract', urlEncodedParser, async function (req, res) {
+    await handlers.extractUrls(req, res);
+});
+
+router.post('/spider/validate', urlEncodedParser, async function (req, res) {
+    await handlers.getPageStatus(req, res);
 });
 
 module.exports = router;

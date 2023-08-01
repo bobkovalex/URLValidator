@@ -1,33 +1,39 @@
-var count2xx, count3xx, count4xx, count5xx, countTotal = 0;
-const workerStatus = {
-    NotRunning: 'Not Running',
-    InProgress: 'In Progress',
-    Finished: 'Finished',
-    Error: 'Error'
-};
+var count2xx, count3xx, count4xx, count5xx, countTotal, crawledTotal = 0;
 
 $( document ).ready(function() {
     // Crawl URL
     $('#url-validate').on('click', function(){
-        setStatus(workerStatus.InProgress);
-        var checkbox = $('#innerHTMLCheckbox').is(":checked");
+        // show loading
+        $('#loading').show();
+        // get entered url
         var url = $('#url').val();
+        // clear previous data if any
         clear(false);
-        setStatus(workerStatus.InProgress);
-        // send post request to endpoint
+        // parse url / extract all href links
         $.ajax({
-            url  : '/spider/crawl',
-            type : 'POST',
+            url: '/spider/extract',
+            type: 'POST',
             data: {
-                url: url,
-                spiderMode: checkbox
+                url: url
             },
-            success: function(data){
-                data.forEach((elem) => {
-                    printResult(elem.url, elem.codeStatus);
+            success: function(response){
+                countTotal = response.length;
+                // loop though each url/link and check response statuses
+                response.forEach((url) => {
+                    $.ajax({
+                        url: '/spider/validate',
+                        type: 'POST',
+                        data: {
+                            url: url
+                        },
+                        success: function(response){
+                            // append resulted response
+                            printResult(response.url, response.codeStatus);
+                            // update counters
+                            setCounters();
+                        }
+                    });
                 });
-                setCounters();
-                setStatus(workerStatus.Finished);
             }
         });
     });
@@ -71,7 +77,7 @@ $( document ).ready(function() {
  * @param {*} codeStatus 
  */
 function printResult(url, codeStatus){    
-    var inputStatus = `<span class="input-group-text text-white border-light bg-success" id="inputGroup-sizing-sm">${codeStatus}</span>`;
+    var inputStatus = `<span class="input-group-text text-white border-light bg-${codeStatus}" id="inputGroup-sizing-sm">${codeStatus}</span>`;
     switch(true){
         case (codeStatus >= '200' && codeStatus < '300'):
             count2xx++;
@@ -90,7 +96,7 @@ function printResult(url, codeStatus){
             codeStatus = '5xx';
             break;
     }
-    countTotal++;
+    crawledTotal++;
     // append input-url
     var html =  
     `<div class="input-group input-group-sm mb-3 status status-${codeStatus}">`+
@@ -104,25 +110,6 @@ function printResult(url, codeStatus){
 }
 
 /**
- * Set current work status
- * @param {*} status 
- */
-function setStatus(status){
-    $('#uri-status > span').text(status);
-    switch(status){
-        case workerStatus.InProgress:
-            $('#loading').show();
-            break;
-        case workerStatus.Finished:
-            $('#loading').hide();
-            break;
-        case workerStatus.NotRunning:
-            $('#loading').hide();
-            break;
-    }
-}
-
-/**
  * Reset/clear counters and HTML containers
  * @param {*} clearInputUrl 
  */
@@ -132,8 +119,8 @@ function clear(clearInputUrl){
     count4xx = 0;
     count5xx = 0;
     countTotal = 0;
+    crawledTotal = 0;
     setCounters();
-    setStatus(workerStatus.NotRunning);
     $('#crawl-results').html('');
     if(clearInputUrl){
         $('#url').val('');
@@ -149,4 +136,7 @@ function setCounters(){
     $('#uri-stats-4xx > span').text(count4xx);
     $('#uri-stats-5xx > span').text(count5xx);
     $('#uri-stats-total > span').text(countTotal);
+    if(crawledTotal > 0 && crawledTotal == countTotal){
+        $('#loading').hide();
+    }
 }

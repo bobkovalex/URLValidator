@@ -4,8 +4,20 @@ body {
     font-family: 'Open Sans',sans-serif;
 }
 
-.checkbox-container {
-  color: #424242;
+.bg-200, .bg-201, .bg-202, .bg-203, .bg-204 {
+  background-color: #198754;
+}
+
+.bg-300, .bg-301, .bg-302, .bg-303, .bg-304 {
+  background-color: #46afe8;
+}
+
+.bg-400, .bg-401, .bg-402, .bg-403, .bg-404 {
+  background-color: #ffc107;
+}
+
+.bg-500, .bg-501, .bg-502, .bg-503, .bg-504 {
+  background-color: #dc3545;
 }
 
 /*
@@ -14,7 +26,6 @@ body {
  */
 #loading {
     text-align: center;
-    margin-top: 80px;
     display: none;
 }
 
