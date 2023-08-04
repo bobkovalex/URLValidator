@@ -1,0 +1,44 @@
+<html prefix="og: http://ogp.me/ns#" lang="en">
+    <head>
+        <%- include('partials/head') %>
+        <script type="text/javascript" src="/resources/js/url-validator.js"></script>
+    </head>
+    <body class="bg-light">
+        <%- include('partials/header') %>
+        <section>
+            <div class="container">
+                <div class="row text-center mt-5">
+                    <h1 class="text-dark">URL Validator</h1>
+                    <h2 class="text-secondary lead">Validate all URLs from a list</h2>
+                </div>
+                <div class="row pt-4 pb-4 w-100 mx-auto">
+                    <div class="col-12 d-flex flex-row bg-white p-4 rounded">
+                        <div role="button" class="uri-stats pe-5 text-dark" id="uri-stats-total">Total URLs: <span>0</span></div>
+                        <div role="button" class="uri-stats pe-5 text-success" id="uri-stats-2xx">2xx: <span>0</span></div>
+                        <div role="button" class="uri-stats pe-5 text-info" id="uri-stats-3xx">3xx: <span>0</span></div>
+                        <div role="button" class="uri-stats pe-5 text-warning" id="uri-stats-4xx">4xx: <span>0</span></div>
+                        <div role="button" class="uri-stats text-danger" id="uri-stats-5xx">5xx: <span>0</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 bg-white pt-2 pb-2 rounded-3 d-flex flex-column">
+                        <!-- <div class="row"> -->
+                            <div class="">
+                                <textarea class="form-control shadow-none" name="urls" id="url-list" placeholder="Enter ULRs list separated by ENTER" style="height: calc(100vh - 500px); min-height: 300px;"></textarea>
+                            </div>
+                            <div class="d-flex flex-row mt-4">
+                                <button class="btn btn-danger rounded-2 ps-3 pe-3 ms-2 me-2" type="button" id="url-clear"><i class="fa-solid fa-eraser"></i> Clear</button>
+                                <button class="btn btn-primary rounded-2 ps-3 pe-3 ms-2 me-2" type="button" id="url-validate"><i class="fa-solid fa-spell-check"></i> Validate</button>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                    <div class="col-12 col-md-6" id="crawl-result-container">
+                        <%- include('partials/loading') %>
+                        <div id="crawl-results"><!-- checked urls will be appended here --></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('partials/footer') %>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<html prefix="og: http://ogp.me/ns#" lang="en">
+    <head>
+        <%- include('partials/head') %>
+    </head>
+    <body class="bg-light">
+        <%- include('partials/header') %>
+        <section>
+            <div class="container">
+                <div class="row text-center mt-5 mb-5">
+                    <h1 class="text-dark">SEO Little Helper</h1>
+                    <h2 class="text-secondary lead">Online tools for all your needs</h2>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row mx-auto">
+                    <div class="card m-3" style="width: 16rem;">
+                        <div class="text-center p-5"><i class="fa-solid fa-spider fs-1"></i></div>
+                        <div class="card-body">
+                        <h5 class="card-title">URL Crawler</h5>
+                        <p class="card-text">Crawl your page links</p>
+                        <a href="/url/spider" class="btn btn-primary">Go to crawler</a>
+                        </div>
+                    </div>
+                    <div class="card m-3" style="width: 16rem;">
+                        <div class="text-center p-5"><i class="fa-solid fa-spell-check fs-1"></i></div>
+                        <div class="card-body">
+                        <h5 class="card-title">URL Validator</h5>
+                        <p class="card-text">Validate your pages</p>
+                        <a href="/url/validator" class="btn btn-primary">Go to validator</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('partials/footer') %>
+    </body>
+</html>

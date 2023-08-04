@@ -4,7 +4,15 @@ const bodyParser = require('body-parser');
 const handlers = require('./handlers');
 
 router.get('/', async function(req, res){
-    await handlers.spider(req, res);
+    await handlers.index(req, res);
+});
+
+router.get('/url/spider', async function(req, res){
+    await handlers.urlSpider(req, res);
+});
+
+router.get('/url/validator', async function(req, res){
+    await handlers.urlValidator(req, res);
 });
 
 // API
